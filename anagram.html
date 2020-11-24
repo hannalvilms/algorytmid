@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagram</title>
+    <!--install Algorithmia-->
+    <script src="https://algorithmia.com/v1/clients/js/algorithmia-0.2.1.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div>
+    <h2>Anagrams</h2>
+    <h3>Enter two words to determine if they are anagrams.</h3>
+    <input id="firstInput">
+    <input id="secondInput">
+    <button id="btn">Submit</button>
+    <h3>Your result: <h3 id="output"></h3></h3>
+</div>
+
+<script>
+    let button = document.getElementById("btn");
+
+    button.addEventListener("click", () => {
+        //use Algorithmia
+        let firstInput = document.getElementById("firstInput").value;
+        let secondInput  = document.getElementById("secondInput").value;
+        let input = [firstInput, secondInput];
+
+        Algorithmia.client("sim1aENf6+KzL3JtfK8qs9eS/Fw1") //api key
+            .algo("WebPredict/AreAnagrams/0.1.0?timeout=300")
+            .pipe(input)
+            //display whether true of false
+            .then(function(output) {document.getElementById("output").innerHTML = output.result});
+    });
+</script>
+
+</body>
+</html>

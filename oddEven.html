@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd or Even</title>
+</head>
+<body>
+
+<div>
+    <h2>Is your number odd or even?</h2>
+    <h3>Enter your number: </h3>
+    <br>
+    <input type="text" id="guessNumber">
+    <input type="submit" value="Guess" id="userInput">
+</div>
+<h4 id="output"></h4>
+
+<script type="text/javascript">
+    document.getElementById("userInput").onclick = function () {
+
+        // Number entered by user
+        var number = document.getElementById("guessNumber").value;
+
+        //Check if user enters number, if not, alert
+        (!number || isNaN(number)) ? alert("Please enter a valid number") :
+
+        // If user's guess number is even, output will be 'Number is even', else 'Number is odd'"
+        ((number % 2 === 0) ? (document.getElementById("output").innerHTML = "Number is even!") :
+        (document.getElementById("output").innerHTML = "Number is odd!"));
+
+    };
+</script>
+
+
+</body>
+</html>

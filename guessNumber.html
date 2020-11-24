@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random number</title>
+</head>
+<body>
+
+<div class="form">
+    <h2>A random number between 1 and 100 has been generated. Can you guess it?</h2>
+    <h3>Enter your number: </h3>
+    <br>
+    <input type="text" id="guessNumber">
+    <input type="submit" value="Guess" id="submitGuess">
+</div>
+<h4 id="output"></h4>
+
+<script type="text/javascript">
+
+    // Generate random number
+    var number = Math.floor(Math.random() * 100) + 1;
+
+    // Submit guess
+    document.getElementById("submitGuess").onclick = function () {
+
+        // Number entered by user
+        var guess = document.getElementById("guessNumber").value;
+
+        //Check if user enters number, if not, alert
+        (!guess || isNaN(guess)) ? alert("Please enter a valid number") :
+
+        // If user's guess is correct, the output will be "Correct!", if the guessed number is smaller "Number is smaller", if the guessed number is bigger "Number is bigger"
+        (guess == number) ? (document.getElementById("output").innerHTML = "Correct!") :
+        ((guess > number) ? (document.getElementById("output").innerHTML = "Number is smaller") :
+        (document.getElementById("output").innerHTML = "Number is bigger"));
+    }
+
+</script>
+</body>
+</html>
